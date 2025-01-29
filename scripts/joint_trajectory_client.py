@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Copyright (c) 2013-2015, Rethink Robotics
 # All rights reserved.
@@ -79,6 +79,7 @@ class Trajectory(object):
 
     def start(self):
         self._goal.trajectory.header.stamp = rospy.Time.now()
+        print("goal_msg:", self._goal)
         self._client.send_goal(self._goal)
 
     def stop(self):

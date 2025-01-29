@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Copyright (c) 2013-2015, Rethink Robotics
 # All rights reserved.
@@ -56,7 +56,7 @@ class Wobbler(object):
         self._right_joint_names = self._right_arm.joint_names()
 
         # control parameters
-        self._rate = 500.0  # Hz
+        self._rate = 500  # Hz,, has to be int, not float
 
         print("Getting robot state... ")
         self._rs = baxter_interface.RobotEnable(CHECK_VERSION)
@@ -69,7 +69,7 @@ class Wobbler(object):
 
     def _reset_control_modes(self):
         rate = rospy.Rate(self._rate)
-        for _ in xrange(100):
+        for _ in range(100):
             if rospy.is_shutdown():
                 return False
             self._left_arm.exit_control_mode()
